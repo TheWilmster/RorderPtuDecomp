@@ -17,8 +17,10 @@ try
 }
 catch (InvalidOperationException)
 {
+    Console.ForegroundColor = ConsoleColor.Red;
     Console.WriteLine("Missing .yyp or .win file in the same folder as the exe\n" +
         "Please drag the .yyp file and the .win file to the exe folder then try again\n");
+    Console.ReadLine();
     return 1; //ERROR
 }
 
@@ -78,16 +80,20 @@ Order(data.Sprites.Cast<UndertaleNamedResource>().ToList());
 
 if (failed)
 {
+    Console.ForegroundColor = ConsoleColor.Red;
     Console.WriteLine("Resources not found.\n" +
     "It means the object exists in the original but not the modded version (YYC file)\n" +
     "Please include it in the modded (decomp) then try again");
+    Console.ReadLine();
     return 1; //ERROR
 }
 
+Console.ForegroundColor = ConsoleColor.Green;
 string outputFileName = "PizzaTower_GM2_output.yyp";
 var outputJson = Path.Combine(exeFolder, outputFileName);
 File.WriteAllText(outputJson, yycJson.ToJsonString());
 Console.WriteLine($"Succesfully Done! copy {outputFileName} to your original .yyp file");
+Console.ReadLine();
 return 0; //Succesful
 
 //HashSet<string> types = new();
