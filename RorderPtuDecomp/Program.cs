@@ -51,7 +51,7 @@ int GetResourceIndex(string resourceName)
 }
 
 bool failed = false;
-void Order(IList<UndertaleNamedResource> namedResources)
+void Order<T>(IList<T> namedResources) where T : UndertaleNamedResource
 {
     for (int i = namedResources.Count - 1; i >= 0; i--)
     {
@@ -74,9 +74,9 @@ void Order(IList<UndertaleNamedResource> namedResources)
 }
 
 Console.WriteLine("Ordering gameobjects...");
-Order(data.GameObjects.Cast<UndertaleNamedResource>().ToList());
+Order(data.GameObjects);
 Console.WriteLine("Ordering sprites...");
-Order(data.Sprites.Cast<UndertaleNamedResource>().ToList());
+Order(data.Sprites);
 
 if (failed)
 {
