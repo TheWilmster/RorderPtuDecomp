@@ -44,7 +44,7 @@ int GetResourceIndex(string resourceName)
     {
         JsonObject? resource = (resources[i] as JsonObject);
         if (resource == null) continue;
-        if (resource["id"]?["name"]?.GetValue<string>() == resourceName)
+        if (resource["id"]?["name"]?.GetValue<string>().Equals(resourceName, StringComparison.CurrentCultureIgnoreCase) ?? false)
             return i;
     }
     return -1;
