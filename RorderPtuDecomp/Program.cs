@@ -77,6 +77,8 @@ Console.WriteLine("Ordering gameobjects...");
 Order(data.GameObjects);
 Console.WriteLine("Ordering sprites...");
 Order(data.Sprites);
+Console.WriteLine("Ordering sounds...");
+Order(data.sounds);
 
 if (failed)
 {
